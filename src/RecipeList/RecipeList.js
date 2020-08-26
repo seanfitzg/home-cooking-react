@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useApi } from '../useApi';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 export const Recipes = () => {
   const opts = {
     audience: 'https://home-cooking/api',
     scope: 'read:recipes',
   };
-  const { login, getAccessTokenWithPopup } = useAuth0();
+  const { loginWithPopup, getAccessTokenWithPopup } = useAuth0();
   const { loading, error, refresh, data } = useApi(
     'http://localhost:5000/recipes',
     opts
@@ -19,24 +20,27 @@ export const Recipes = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  if (error) {
-    if (error.error === 'login_required') {
-      return <button onClick={() => login(opts)}>Login</button>;
-    }
-    if (error.error === 'consent_required') {
-      return (
-        <button onClick={getTokenAndTryAgain}>Consent to reading users</button>
-      );
-    }
-    return <div>Oops {error.message}</div>;
+  if (error && error.error === 'login_required') {
+    //return <button onClick={() => loginWithPopup(opts)}>Login</button>;
+    return <div>Please log in...</div>;
   }
-  console.log('data :>> ', data);
+  // if (error.error === 'consent_required') {
+  //   return (
+  //     <button onClick={getTokenAndTryAgain}>Consent to reading users</button>
+  //   );
+  // }
+  // return <div>Oops {error.message}</div>;
+  // }
+
   return (
-    <ul>
-      {data.map((receipe, index) => {
-        return <li key={index}>{receipe.name}</li>;
-      })}
-    </ul>
+    <>
+      <ul>
+        {data.map((receipe, index) => {
+          return <li key={index}>{receipe.name}</li>;
+        })}
+      </ul>
+      <Link to="/add">Add a Recipe</Link>
+    </>
   );
 };
 
