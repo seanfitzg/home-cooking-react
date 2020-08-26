@@ -1,19 +1,21 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <button
+    <Button
       onClick={() =>
         loginWithRedirect({
           redirectUri: `${window.location.origin}/recipes`,
         })
       }
+      color="inherit"
     >
-      Log In
-    </button>
+      Login
+    </Button>
   );
 };
 

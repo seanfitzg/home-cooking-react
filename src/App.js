@@ -3,11 +3,12 @@ import './App.css';
 import Profile from './Authentication/Profile';
 import { Auth0Provider } from '@auth0/auth0-react';
 import Header from './Header';
+import RecipeAppBar from './RecipeAppBar/RecipeAppBar';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
+import Container from '@material-ui/core/Container';
 
 function App() {
-  console.log('window.location.origin :>> ', window.location.origin);
   return (
     <BrowserRouter>
       <Auth0Provider
@@ -17,8 +18,11 @@ function App() {
         // redirectUri={`${window.location.origin}/recipes`}
         scope="read:current_user update:current_user_metadata"
       >
-        <Header />
-        <Routes />
+        <Container maxWidth="md">
+          <RecipeAppBar />
+          <Header />
+          <Routes />
+        </Container>
       </Auth0Provider>
     </BrowserRouter>
   );
