@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import useApi from '../useApi';
 import { useHistory } from 'react-router-dom';
 import postRecipe from './postRecipe';
 
