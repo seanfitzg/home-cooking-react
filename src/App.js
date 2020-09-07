@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Profile from './Authentication/Profile';
 import { Auth0Provider } from '@auth0/auth0-react';
-import Header from './Header';
 import RecipeAppBar from './RecipeAppBar/RecipeAppBar';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
@@ -20,7 +19,6 @@ function App() {
       >
         <Container maxWidth="md">
           <RecipeAppBar />
-          <Header />
           <Routes />
         </Container>
       </Auth0Provider>

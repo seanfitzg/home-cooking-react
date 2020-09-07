@@ -4,9 +4,18 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import postRecipe from './postRecipe';
 
+const useStyles = makeStyles((theme) => ({
+  grid: {
+    marginTop: '20px',
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
 const AddRecipe = () => {
+  const classes = useStyles();
   const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
   const [recipe, setRecipe] = useState({ name: '', method: '' });
@@ -19,7 +28,13 @@ const AddRecipe = () => {
 
   return (
     <form>
-      <Grid container direction="column" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        className={classes.grid}
+      >
         <TextField
           id="outlined-full-width"
           label="Name"
@@ -31,6 +46,28 @@ const AddRecipe = () => {
           }}
           value={recipe.name}
           onChange={(evt) => setRecipe({ ...recipe, name: evt.target.value })}
+          variant="outlined"
+        />
+        <TextField
+          id="outlined-full-width"
+          label="Description"
+          style={{ margin: 8 }}
+          fullWidth
+          multiline
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputProps={{
+            style: {
+              height: '50px',
+              padding: '0 14px',
+            },
+          }}
+          value={recipe.description}
+          onChange={(evt) =>
+            setRecipe({ ...recipe, description: evt.target.value })
+          }
           variant="outlined"
         />
         <TextField
