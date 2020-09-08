@@ -18,6 +18,7 @@ function App() {
         scope="read:current_user update:current_user_metadata"
       >
         <Container maxWidth="md">
+          <div>{process.env.REACT_APP_ENV}</div>
           <RecipeAppBar />
           <Routes />
         </Container>

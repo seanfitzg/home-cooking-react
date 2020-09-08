@@ -1,3 +1,7 @@
+import config from '../config';
+
+const url = config[process.env.REACT_APP_ENV].recipes_api;
+
 const postRecipe = async (recipe, getAccessTokenSilently) => {
   const options = {
     audience: 'https://home-cooking/api',
@@ -12,11 +16,8 @@ const postRecipe = async (recipe, getAccessTokenSilently) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-  // const res = await fetch('http://localhost:5000/recipes', request);
-  const res = await fetch(
-    'https://homecooking.azurewebsites.net/recipes',
-    request
-  );
+
+  const res = await fetch(url, request);
   return res;
 };
 
