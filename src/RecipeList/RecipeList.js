@@ -1,13 +1,13 @@
 import React from 'react';
-import { useApi } from '../useApi';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery } from 'react-query';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import useGetRecipes from './useGetRecipes';
+import getRecipes from './getRecipes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,12 +23,15 @@ const useStyles = makeStyles((theme) => ({
 export const Recipes = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { loading, error, refresh, data } = useGetRecipes();
+  const { getAccessTokenSilently } = useAuth0();
+  const { isLoading, error, data } = useQuery('recipes', () =>
+    getRecipes(getAccessTokenSilently)
+  );
   // const getTokenAndTryAgain = async () => {
   //   await getAccessTokenWithPopup(opts);
   //   refresh();
   // };
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
   if (error && error.error === 'login_required') {
@@ -40,9 +43,9 @@ export const Recipes = () => {
   //     <button onClick={getTokenAndTryAgain}>Consent to reading users</button>
   //   );
   // }
-  // return <div>Oops {error.message}</div>;
-  // }
-
+  if (error) {
+    return <div>Oops {error.message}</div>;
+  }
   return (
     <>
       <ul>

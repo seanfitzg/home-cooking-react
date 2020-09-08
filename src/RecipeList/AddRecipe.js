@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '20px',
     backgroundColor: theme.palette.background.paper,
   },
+  add: {
+    marginRight: '20px',
+  },
 }));
 
 const AddRecipe = () => {
@@ -90,9 +93,29 @@ const AddRecipe = () => {
           onChange={(evt) => setRecipe({ ...recipe, method: evt.target.value })}
           variant="outlined"
         />
-        <Button variant="outlined" color="primary" onClick={addNewRecipe}>
-          Add
-        </Button>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.grid}
+        >
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={addNewRecipe}
+            className={classes.add}
+          >
+            Add
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => history.push('/recipes')}
+          >
+            Cancel
+          </Button>
+        </Grid>
       </Grid>
     </form>
   );

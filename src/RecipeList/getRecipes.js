@@ -1,12 +1,11 @@
-const postRecipe = async (recipe, getAccessTokenSilently) => {
+const getRecipes = async (getAccessTokenSilently) => {
   const options = {
     audience: 'https://home-cooking/api',
     scope: 'read:recipes',
   };
   const accessToken = await getAccessTokenSilently(options);
   const request = {
-    method: 'post',
-    body: JSON.stringify(recipe),
+    method: 'get',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
@@ -17,7 +16,7 @@ const postRecipe = async (recipe, getAccessTokenSilently) => {
     'https://homecooking.azurewebsites.net/recipes',
     request
   );
-  return res;
+  return await res.json();
 };
 
-export default postRecipe;
+export default getRecipes;
