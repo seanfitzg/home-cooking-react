@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery } from 'react-query';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import EditIcon from '@material-ui/icons/Edit';
+import Link from '@material-ui/core/Link';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import getRecipes from './getRecipes';
+import getRecipes from '../../Api/getRecipes';
+import { store } from '../../Utils/store.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Recipes = () => {
+  const { state, dispatch } = useContext(store);
+  console.log('state :>> ', state);
   const classes = useStyles();
   const history = useHistory();
   const { getAccessTokenSilently } = useAuth0();
@@ -53,9 +60,11 @@ export const Recipes = () => {
           return (
             <List className={classes.root} key={index}>
               <ListItem alignItems="flex-start">
-                {/* <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar> */}
+                <Link component={RouterLink} to={`/edit?id=${recipe.id}`}>
+                  <ListItemIcon>
+                    <EditIcon />
+                  </ListItemIcon>
+                </Link>
                 <ListItemText
                   primary={recipe.name}
                   secondary={recipe.description}
@@ -72,6 +81,13 @@ export const Recipes = () => {
       >
         Add a new Recipe
       </Button>
+      {/* <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => dispatch({ type: 'set_to_blue' })}
+      >
+        test
+      </Button> */}
     </>
   );
 };

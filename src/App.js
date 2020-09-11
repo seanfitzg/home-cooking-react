@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import Profile from './Authentication/Profile';
 import { Auth0Provider } from '@auth0/auth0-react';
-import RecipeAppBar from './RecipeAppBar/RecipeAppBar';
+import RecipeAppBar from './Components/RecipeAppBar/RecipeAppBar';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 import Container from '@material-ui/core/Container';
+import { StateProvider } from './Utils/store.js';
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
         // redirectUri={`${window.location.origin}/recipes`}
         scope="read:current_user update:current_user_metadata"
       >
-        <Container maxWidth="md">
-          <div>{process.env.REACT_APP_ENV}</div>
-          <RecipeAppBar />
-          <Routes />
-        </Container>
+        <StateProvider>
+          <Container maxWidth="md">
+            <div>{process.env.REACT_APP_ENV}</div>
+            <RecipeAppBar />
+            <Routes />
+          </Container>
+        </StateProvider>
       </Auth0Provider>
     </BrowserRouter>
   );

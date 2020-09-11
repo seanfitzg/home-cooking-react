@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import { useHistory } from 'react-router-dom';
-import LogoutButton from '../Authentication/LogoutButton';
-import LoginButton from '../Authentication/LoginButton';
+import LogoutButton from '../../Authentication/LogoutButton';
+import LoginButton from '../../Authentication/LoginButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {

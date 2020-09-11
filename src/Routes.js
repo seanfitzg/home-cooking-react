@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import AddRecipe from './RecipeList/AddRecipe';
-import RecipeList from './RecipeList/RecipeList';
+import AddEditRecipe from './Components/RecipeList/AddEditRecipe';
+import RecipeList from './Components/RecipeList/RecipeList';
 
 const Routes = () => {
   return (
@@ -15,7 +15,10 @@ const Routes = () => {
         <RecipeList />
       </Route>
       <Route path="/add">
-        <AddRecipe />
+        <AddEditRecipe />
+      </Route>
+      <Route path="/edit">
+        <AddEditRecipe />
       </Route>
     </Switch>
   );
