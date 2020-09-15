@@ -9,6 +9,7 @@ So far, this app uses:
 - [Auth0](https://auth0.com/) to enable username or google account authentication.
 - [react-query](https://react-query.tanstack.com/) for some very basic caching
 - react-hooks for managing state
+- deployed to Heroku with the help of https://github.com/mars/create-react-app-buildpack
 
 Coming soon hopefully:
 
