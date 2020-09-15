@@ -6,15 +6,16 @@ The ASP.Net Core api is here -> https://github.com/seanfitzg/HomeCookingApi/tree
 
 So far, this app uses:
 
-- Auth0 to enable username or google account authentication.
-- react-query for some very basic caching
+- [Auth0](https://auth0.com/) to enable username or google account authentication.
+- [react-query](https://react-query.tanstack.com/) for some very basic caching
 - react-hooks for managing state
+- deployed to Heroku with the help of https://github.com/mars/create-react-app-buildpack
 
 Coming soon hopefully:
 
-- react-testing-library - I really like how RTL can help developers move a lot of their UI-based tests out of unstable e2e suites and into tests that don't rely on backend data. This really helps in situations where you are testing user interactions as opposed to api calls.
-- mock-service-worker - this works really well with react-testing-library, enabling the mocking of your api endpoints.
-- zustand - comes highly recommend from the developers of react-query. Enables the state management without the head-scratching complications of react-redux.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) - I really like how RTL can help developers move a lot of their UI-based tests out of unstable e2e suites and into tests that don't rely on backend data. This really helps in situations where you are testing user interactions as opposed to api calls.
+- [Mock Service Worker](https://mswjs.io/) - this works really well with react-testing-library, enabling the mocking of your api endpoints.
+- [zustand](https://github.com/react-spring/zustand) - comes highly recommend from the developers of react-query. Enables the state management without the head-scratching complications of react-redux.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
