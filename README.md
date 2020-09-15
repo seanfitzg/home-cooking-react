@@ -1,3 +1,21 @@
+## Home Cooking - a demo react application
+
+This is an ongoing, albeit fairly basic, demo application I'm building to learn, investigate & showcase some skills and technologies required to build a full stack React -> ASP.Net Core application.
+
+The ASP.Net Core api is here -> https://github.com/seanfitzg/HomeCookingApi/tree/master/HomeCooking.Api
+
+So far, this app uses:
+
+- Auth0 to enable username or google account authentication.
+- react-query for some very basic caching
+- react-hooks for managing state
+
+Coming soon hopefully:
+
+- react-testing-library - I really like how RTL can help developers move a lot of their UI-based tests out of unstable e2e suites and into tests that don't rely on backend data. This really helps in situations where you are testing user interactions as opposed to api calls.
+- mock-service-worker - this works really well with react-testing-library, enabling the mocking of your api endpoints.
+- zustand - comes highly recommend from the developers of react-query. Enables the state management without the head-scratching complications of react-redux.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -26,43 +44,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
