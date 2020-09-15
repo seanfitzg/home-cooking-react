@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useQuery } from 'react-query';
+import { useQuery, queryCache } from 'react-query';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
@@ -9,10 +9,13 @@ import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Link from '@material-ui/core/Link';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import getRecipes from '../../Api/getRecipes';
+import deleteRecipe from '../../Api/deleteRecipe';
+import Confirm from '../Confirm/Confirm';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,12 +34,29 @@ const useStyles = makeStyles((theme) => ({
 export const Recipes = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { getAccessTokenSilently, isAuthenticated, user } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const { isLoading, error, data } = useQuery('recipes', () =>
     getRecipes(getAccessTokenSilently)
   );
+  const [openConfirm, setOpenConfirm] = useState(false);
+  const [recipeToDelete, setRecipeToDelete] = useState(null);
+
+  const handleClose = async (confirmDelete) => {
+    if (confirmDelete) {
+      const result = await deleteRecipe(recipeToDelete, getAccessTokenSilently);
+      if (result.ok) {
+        await queryCache.invalidateQueries('recipes');
+      }
+    }
+    setOpenConfirm(false);
+  };
+
   if (!isAuthenticated) return null;
-  console.log('user :>> ', user);
+
+  const handleDeleteRecipe = async (recipe) => {
+    setRecipeToDelete(recipe);
+    setOpenConfirm(true);
+  };
 
   if (isLoading) {
     return <CircularProgress className={classes.loader} />;
@@ -59,6 +79,11 @@ export const Recipes = () => {
                     <EditIcon />
                   </ListItemIcon>
                 </Link>
+                <Link href="#" onClick={() => handleDeleteRecipe(recipe)}>
+                  <ListItemIcon>
+                    <DeleteIcon />
+                  </ListItemIcon>
+                </Link>
                 <ListItemText
                   primary={recipe.name}
                   secondary={recipe.description}
@@ -75,6 +100,7 @@ export const Recipes = () => {
       >
         Add a new Recipe
       </Button>
+      <Confirm open={openConfirm} handleClose={handleClose} />
     </>
   );
 };
