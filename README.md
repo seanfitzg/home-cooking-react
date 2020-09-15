@@ -9,7 +9,6 @@ So far, this app uses:
 - Auth0 to enable username or google account authentication.
 - react-query for some very basic caching
 - react-hooks for managing state
-- hosted on Heroku here: https://flux-home-cooking.herokuapp.com/
 
 Coming soon hopefully:
 
