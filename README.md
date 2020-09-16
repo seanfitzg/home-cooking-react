@@ -1,6 +1,6 @@
 ## Home Cooking - a demo react application
 
-This is an ongoing, albeit fairly basic, demo application I'm building to learn, investigate & showcase some skills and technologies required to build a full stack React -> ASP.Net Core application.
+This is an ongoing, albeit fairly basic, demo application I'm building to learn/investigate some skills and technologies required to build a full stack React -> ASP.Net Core application.
 
 Deployed to:  https://flux-home-cooking.herokuapp.com/
 
