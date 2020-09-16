@@ -2,11 +2,13 @@
 
 This is an ongoing, albeit fairly basic, demo application I'm building to learn, investigate & showcase some skills and technologies required to build a full stack React -> ASP.Net Core application.
 
+Deployed to:  https://flux-home-cooking.herokuapp.com/
+
 The ASP.Net Core api is here -> https://github.com/seanfitzg/HomeCookingApi/tree/master/HomeCooking.Api
 
 So far, this app uses:
 
-- [Auth0](https://auth0.com/) to enable username or google account authentication.
+- [Auth0](https://auth0.com/) to enable username authentication.
 - [react-query](https://react-query.tanstack.com/) for some very basic caching
 - react-hooks for managing state
 - deployed to Heroku with the help of https://github.com/mars/create-react-app-buildpack
