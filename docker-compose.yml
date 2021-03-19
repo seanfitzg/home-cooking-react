@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  recipeui:
+    image: ${DOCKER_REGISTRY-}recipe-ui:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  recipeui-dapr:
+    image: "daprio/daprd:latest"
+    command: [ "./daprd", "-app-id", "recipeui", "-app-port", "80" ]
+    depends_on:
+      - recipeui
+    network_mode: "service:recipeui"
+
+  # daprbackend:
+  #   image: ${DOCKER_REGISTRY-}daprbackend
+  #   build:
+  #     context: .
+  #     dockerfile: DaprBackEnd/Dockerfile
+  #   ports:
+  #     - "52000:50001"
+
+  # daprbackend-dapr:
+  #   image: "daprio/daprd:latest"
+  #   command: [ "./daprd", "-app-id", "daprbackend", "-app-port", "80" ]
+  #   depends_on:
+  #     - daprfrontend
+  #   network_mode: "service:daprbackend"
