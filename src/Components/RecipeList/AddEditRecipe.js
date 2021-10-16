@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { store } from '../../Utils/store';
 import { useAuth0 } from '@auth0/auth0-react';
 import queryString from 'query-string';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import postRecipe from '../../Api/postRecipe';
 import updateRecipe from '../../Api/updateRecipe';
 import getRecipeById from '../../Api/getRecipeById';
+import Ingredients from '../Ingredients/Ingredients';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -22,9 +24,14 @@ const useStyles = makeStyles((theme) => ({
 
 const AddEditRecipe = () => {
   const classes = useStyles();
+  const storeContext = useContext(store);
   const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
-  const [recipe, setRecipe] = useState({ name: '', method: '' });
+  //const [recipe, setRecipe] = useState({ name: '', method: '' });
+  const { state, dispatch } = storeContext;
+
+  const recipe = state.recipe ?? {};
+
   const addUpdateRecipe = async () => {
     let result;
     if (recipe.id) {
@@ -37,9 +44,13 @@ const AddEditRecipe = () => {
     }
   };
 
+  const setRecipe = (recipe) => {
+    dispatch({ type: 'SET_RECIPE', recipe });
+  };
+
   const getRecipe = async (id) => {
-    const result = await getRecipeById(getAccessTokenSilently, id);
-    setRecipe(result);
+    const recipe = await getRecipeById(getAccessTokenSilently, id);
+    setRecipe(recipe);
   };
 
   useEffect(() => {
@@ -113,6 +124,9 @@ const AddEditRecipe = () => {
           onChange={(evt) => setRecipe({ ...recipe, method: evt.target.value })}
           variant="outlined"
         />
+
+        <Ingredients ingredients={state.ingredients} />
+
         <Grid
           container
           direction="row"

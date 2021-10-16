@@ -20,11 +20,17 @@ COPY . ./
 CMD ["npm", "start"]
 
 
-#https://mherman.org/blog/dockerizing-a-react-app/
+# https://mherman.org/blog/dockerizing-a-react-app/
 
-#docker build -t recipe-ui:dev .
+# docker build -t homecooking-ui:dev .
 
-#docker run -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true recipe-ui:dev
+# docker run -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true homecooking-ui:dev
 
 #or windows:
-# docker run -it --rm -v %cd%:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true recipe-ui:dev
+# docker run -it --rm -v %cd%:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true homecooking-ui:dev
+
+# to run without docker:
+# dapr run --app-id homecooking-ui --app-port 80 yarn start
+
+# from root folder:
+# docker build -f ./HomeCooking.Ui/Dockerfile -t homecooking-ui:dev ./HomeCooking.Ui
