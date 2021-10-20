@@ -1,17 +1,17 @@
 version: "3.4"
 
 services:
-  homecooking-ui:
-    image: ${DOCKER_REGISTRY-}homecooking-ui:dev
+  home-cooking-web:
+    image: ${DOCKER_REGISTRY-}home-cooking-web:dev
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
 
-  homecooking-ui-dapr:
+  home-cooking-web-dapr:
     image: "daprio/daprd:latest"
-    command: ["./daprd", "-app-id", "homecooking-ui", "-app-port", "80"]
+    command: ["./daprd", "-app-id", "home-cooking-web", "-app-port", "80"]
     depends_on:
-      - homecooking-ui
-    network_mode: "service:homecooking-ui"
+      - home-cooking-web
+    network_mode: "service:home-cooking-web"
