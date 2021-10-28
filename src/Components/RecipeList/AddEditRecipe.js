@@ -40,8 +40,13 @@ const AddEditRecipe = () => {
       result = await postRecipe(recipe, getAccessTokenSilently);
     }
     if (result.ok) {
-      history.push('/recipes');
+      returnToList();
     }
+  };
+
+  const returnToList = () => {
+    dispatch({ type: 'SET_RECIPE', recipe: {} });
+    history.push('/recipes');
   };
 
   const setRecipe = (recipe) => {
@@ -142,11 +147,7 @@ const AddEditRecipe = () => {
           >
             {recipe.id ? <>Update</> : <>Add</>}
           </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => history.push('/recipes')}
-          >
+          <Button variant="outlined" color="primary" onClick={returnToList}>
             Cancel
           </Button>
         </Grid>
