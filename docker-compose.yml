@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   home-cooking-react:
-    image: ${DOCKER_REGISTRY-}home-cooking-react:dev
+    image: ${DOCKER_REGISTRY-}home-cooking-react:prod
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -13,5 +13,5 @@ services:
   #   image: 'daprio/daprd:latest'
   #   command: ['./daprd', '-app-id', 'home-cooking-web', '-app-port', '80']
   #   depends_on:
-  #     - home-cooking-web
+  #     - home-cooking-react
   #   network_mode: 'service:home-cooking-react'
