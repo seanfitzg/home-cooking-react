@@ -27,7 +27,6 @@ const AddEditRecipe = () => {
   const storeContext = useContext(store);
   const { getAccessTokenSilently } = useAuth0();
   const history = useHistory();
-  //const [recipe, setRecipe] = useState({ name: '', method: '' });
   const { state, dispatch } = storeContext;
 
   const recipe = state.recipe ?? {};
