@@ -22,7 +22,9 @@
     "start_prod_api": "REACT_APP_ENV=production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "hlogs": "heroku logs --app home-cooking-react  --tail",
+    "hpush": "git push heroku master"
   },
   "eslintConfig": {
     "extends": "react-app"
