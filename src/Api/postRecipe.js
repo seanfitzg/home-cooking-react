@@ -1,12 +1,6 @@
-import config from '../config';
-
-const url = config[process.env.REACT_APP_ENV].recipes_api;
+import { apiUri, options } from '../config';
 
 const postRecipe = async (recipe, getAccessTokenSilently) => {
-  const options = {
-    audience: 'https://home-cooking/api',
-    scope: 'read:recipes',
-  };
   const accessToken = await getAccessTokenSilently(options);
   const request = {
     method: 'post',
@@ -17,7 +11,7 @@ const postRecipe = async (recipe, getAccessTokenSilently) => {
     },
   };
 
-  const res = await fetch(url, request);
+  const res = await fetch(apiUri, request);
   return res;
 };
 

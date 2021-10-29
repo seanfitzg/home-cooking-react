@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { store } from '../../Utils/store';
 import { useAuth0 } from '@auth0/auth0-react';
 import queryString from 'query-string';

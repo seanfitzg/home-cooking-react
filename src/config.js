@@ -1,8 +1,15 @@
-export default {
+const api = {
   development: {
-    recipes_api: 'http://localhost:5001/recipes',
+    recipesApi: 'http://localhost:5001/recipes',
   },
   production: {
-    recipes_api: 'https://home-cooking-fastify.herokuapp.com/recipes',
+    recipesApi: 'https://home-cooking-fastify.herokuapp.com/recipes',
   },
+};
+
+export const apiUri = api[process.env.NODE_ENV].recipesApi;
+
+export const options = {
+  audience: 'https://home-cooking/api',
+  scope: 'read:recipes',
 };

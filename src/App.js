@@ -22,7 +22,7 @@ function App() {
         >
           <StateProvider>
             <Container maxWidth="md">
-              {/* <div>{process.env.REACT_APP_ENV}</div> */}
+              {/* <div>{process.env.NODE_ENV}</div> */}
               <RecipeAppBar />
               <Routes />
             </Container>
