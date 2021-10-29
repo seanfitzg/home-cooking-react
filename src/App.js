@@ -1,4 +1,5 @@
 import React from 'react';
+import dotenv from 'dotenv';
 import './App.css';
 import { Auth0Provider } from '@auth0/auth0-react';
 import RecipeAppBar from './Components/RecipeAppBar/RecipeAppBar';
@@ -9,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import { StateProvider } from './Utils/store.js';
 
 const queryClient = new QueryClient();
+dotenv.config();
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
         >
           <StateProvider>
             <Container maxWidth="md">
-              {/* <div>{process.env.NODE_ENV}</div> */}
+              {/* <div>{process.env.REACT_APP_ENV}</div> */}
               <RecipeAppBar />
               <Routes />
             </Container>

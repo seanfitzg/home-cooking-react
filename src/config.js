@@ -6,8 +6,8 @@ const api = {
     recipesApi: 'https://home-cooking-fastify.herokuapp.com/recipes',
   },
 };
-
-export const apiUri = api[process.env.NODE_ENV].recipesApi;
+console.log(`process.env.REACT_APP_ENV`, process.env.REACT_APP_ENV);
+export const apiUri = api[process.env.REACT_APP_ENV].recipesApi;
 
 export const options = {
   audience: 'https://home-cooking/api',
