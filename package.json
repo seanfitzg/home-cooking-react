@@ -9,7 +9,9 @@
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/user-event": "^12.8.3",
+    "auth0-js": "^9.18.0",
     "dotenv": "^10.0.0",
+    "js-cookie": "^3.0.1",
     "query-string": "^6.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -24,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "cypress": "./node_modules/.bin/cypress open",
     "hlogs": "heroku logs --app home-cooking-react  --tail",
     "hpush": "git push heroku master"
   },

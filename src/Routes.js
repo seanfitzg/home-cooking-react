@@ -4,7 +4,7 @@ import AddEditRecipe from './Components/RecipeList/AddEditRecipe';
 import RecipeList from './Components/RecipeList/RecipeList';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const Routes = () => {
+const Routes = async () => {
   const { isAuthenticated } = useAuth0();
   return (
     isAuthenticated && (

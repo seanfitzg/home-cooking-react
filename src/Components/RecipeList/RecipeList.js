@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery, useQueryClient } from 'react-query';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
@@ -16,6 +16,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import getRecipes from '../../Api/getRecipes';
 import deleteRecipe from '../../Api/deleteRecipe';
 import Confirm from '../Confirm/Confirm';
+
+import useAuthTest from '../../Authentication/AuthTest.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +38,7 @@ export const Recipes = () => {
   const history = useHistory();
   const queryClient = useQueryClient();
 
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated } = useAuthTest();
   const { isLoading, error, data } = useQuery('recipes', () =>
     getRecipes(getAccessTokenSilently)
   );

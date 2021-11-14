@@ -9,8 +9,11 @@ import Routes from './Routes';
 import Container from '@material-ui/core/Container';
 import { StateProvider } from './Utils/store.js';
 
+// import authTest from './Authentication/AuthTest';
+
 const queryClient = new QueryClient();
 dotenv.config();
+console.log(window.document.cookie);
 
 function App() {
   return (
