@@ -10,3 +10,4 @@ build
 mysql-data
 
 /HomeCooking.Api/RecipeDb.db
+cypress.env.json

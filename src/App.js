@@ -21,6 +21,7 @@ function App() {
           clientId="SpHE4tA54XSUcmrO9A1pkK36AW0rSMSZ"
           audience="https://home-cooking.eu.auth0.com/api/v2/"
           scope="read:current_user update:current_user_metadata"
+          cacheLocation="localstorage"
         >
           <StateProvider>
             <Container maxWidth="md">
