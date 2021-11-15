@@ -23,6 +23,46 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import 'cypress-localstorage-commands';
+import jwt from 'jsonwebtoken';
+
+Cypress.Commands.add('storeAuth', (audience, data) => {
+  const { access_token, expires_in, id_token } = data;
+  const [header, payload, signature] = id_token.split('.');
+  const tokenData = jwt.decode(id_token);
+  const token_type = 'Bearer';
+  const clientId = Cypress.env('auth_client_id');
+  const scope =
+    'openid profile email read:current_user update:current_user_metadata read:recipes';
+
+  window.localStorage.setItem(
+    `@@auth0spajs@@::${clientId}::${audience}::${scope}`,
+    JSON.stringify({
+      body: {
+        access_token,
+        id_token,
+        scope,
+        expires_in,
+        token_type,
+        decodedToken: {
+          encoded: { header, payload, signature },
+          header: {
+            alg: 'RS256',
+            typ: 'JWT',
+          },
+          claims: {
+            __raw: id_token,
+            ...tokenData,
+          },
+          user: tokenData,
+        },
+        audience,
+        client_id: Cypress.env('auth_client_id'),
+      },
+      expiresAt: Math.floor(Date.now() / 1000) + expires_in,
+    })
+  );
+});
 
 Cypress.Commands.add('login', (overrides = {}) => {
   Cypress.log({

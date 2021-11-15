@@ -48,6 +48,8 @@
   "devDependencies": {
     "@testing-library/react": "^11.2.7",
     "cypress": "^8.7.0",
+    "cypress-localstorage-commands": "^1.6.1",
+    "jsonwebtoken": "^8.5.1",
     "msw": "^0.29.0"
   }
 }

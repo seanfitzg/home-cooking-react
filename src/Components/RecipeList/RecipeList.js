@@ -103,6 +103,8 @@ export const Recipes = () => {
         })}
       </ul>
       <Button
+        id="addNewRecipe"
+        aria-label="Add a new Recipe"
         variant="outlined"
         color="primary"
         onClick={() => history.push('/add')}
