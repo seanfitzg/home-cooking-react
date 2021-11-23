@@ -74,7 +74,7 @@ const AddEditRecipe = () => {
         className={classes.grid}
       >
         <TextField
-          id="outlined-full-width"
+          id="recipeName"
           label="Name"
           style={{ margin: 8 }}
           fullWidth
@@ -87,7 +87,7 @@ const AddEditRecipe = () => {
           variant="outlined"
         />
         <TextField
-          id="outlined-full-width"
+          id="recipeDescription"
           label="Description"
           style={{ margin: 8 }}
           fullWidth
@@ -109,7 +109,7 @@ const AddEditRecipe = () => {
           variant="outlined"
         />
         <TextField
-          id="outlined-full-width"
+          id="recipeMethod"
           label="Method"
           style={{ margin: 8 }}
           fullWidth
@@ -143,10 +143,16 @@ const AddEditRecipe = () => {
             color="primary"
             onClick={addUpdateRecipe}
             className={classes.add}
+            id="addOrUpdate"
           >
             {recipe.id ? <>Update</> : <>Add</>}
           </Button>
-          <Button variant="outlined" color="primary" onClick={returnToList}>
+          <Button
+            id="cancel"
+            variant="outlined"
+            color="primary"
+            onClick={returnToList}
+          >
             Cancel
           </Button>
         </Grid>

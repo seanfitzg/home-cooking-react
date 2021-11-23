@@ -82,5 +82,15 @@ Cypress.Commands.add('login', (overrides = {}) => {
       client_secret: Cypress.env('auth_client_secret'),
     },
   };
-  cy.request(options);
+
+  return cy
+    .request(options)
+    .then((resp) => {
+      return resp.body;
+    })
+    .then((body) => {
+      cy.storeAuth('https://home-cooking.eu.auth0.com/api/v2/', body);
+      cy.storeAuth('https://home-cooking/api', body);
+      cy.visit('/recipes');
+    });
 });

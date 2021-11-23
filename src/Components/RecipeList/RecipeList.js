@@ -81,6 +81,7 @@ export const Recipes = () => {
               <ListItem alignItems="flex-start">
                 <Link
                   aria-label="edit"
+                  id={`edit-${recipe.id}`}
                   component={RouterLink}
                   to={`/edit?id=${recipe.id}`}
                 >
@@ -88,7 +89,12 @@ export const Recipes = () => {
                     <EditIcon />
                   </ListItemIcon>
                 </Link>
-                <Link href="#" onClick={() => handleDeleteRecipe(recipe)}>
+                <Link
+                  id={`delete-${recipe.id}`}
+                  className="deleteRecipe"
+                  href="#"
+                  onClick={() => handleDeleteRecipe(recipe)}
+                >
                   <ListItemIcon>
                     <DeleteIcon />
                   </ListItemIcon>

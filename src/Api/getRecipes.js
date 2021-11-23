@@ -1,5 +1,4 @@
 import { apiUri, options } from '../config';
-import Cookies from 'js-cookie';
 
 const getRecipes = async (getAccessTokenSilently) => {
   const accessToken = await getAccessTokenSilently(options);
