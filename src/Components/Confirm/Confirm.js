@@ -20,10 +20,19 @@ export default function Confirm({ open, handleClose }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleClose(true)} color="primary">
+          <Button
+            id="confirmDelete"
+            onClick={() => handleClose(true)}
+            color="primary"
+          >
             Yes
           </Button>
-          <Button onClick={() => handleClose(false)} color="primary" autoFocus>
+          <Button
+            id="cancelDelete"
+            onClick={() => handleClose(false)}
+            color="primary"
+            autoFocus
+          >
             No
           </Button>
         </DialogActions>

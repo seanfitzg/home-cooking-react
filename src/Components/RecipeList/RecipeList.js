@@ -17,6 +17,8 @@ import getRecipes from '../../Api/getRecipes';
 import deleteRecipe from '../../Api/deleteRecipe';
 import Confirm from '../Confirm/Confirm';
 
+//import useAuthTest from '../../Authentication/AuthTest.js';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -79,6 +81,7 @@ export const Recipes = () => {
               <ListItem alignItems="flex-start">
                 <Link
                   aria-label="edit"
+                  id={`edit-${recipe.id}`}
                   component={RouterLink}
                   to={`/edit?id=${recipe.id}`}
                 >
@@ -86,7 +89,12 @@ export const Recipes = () => {
                     <EditIcon />
                   </ListItemIcon>
                 </Link>
-                <Link href="#" onClick={() => handleDeleteRecipe(recipe)}>
+                <Link
+                  id={`delete-${recipe.id}`}
+                  className="deleteRecipe"
+                  href="#"
+                  onClick={() => handleDeleteRecipe(recipe)}
+                >
                   <ListItemIcon>
                     <DeleteIcon />
                   </ListItemIcon>
@@ -101,6 +109,8 @@ export const Recipes = () => {
         })}
       </ul>
       <Button
+        id="addNewRecipe"
+        aria-label="Add a new Recipe"
         variant="outlined"
         color="primary"
         onClick={() => history.push('/add')}
