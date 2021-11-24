@@ -14,6 +14,8 @@ const StateProvider = ({ children }) => {
         return { ...state, color: 'blue' };
       case 'SET_RECIPE':
         return { ...state, recipe: action.recipe };
+      case 'RESET_RECIPE':
+        return { ...state, recipe: initialState.recipe };
       case 'UPDATE_INGREDIENTS':
         return {
           ...state,

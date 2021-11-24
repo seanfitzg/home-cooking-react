@@ -44,7 +44,7 @@ const AddEditRecipe = () => {
   };
 
   const returnToList = () => {
-    dispatch({ type: 'SET_RECIPE', recipe: {} });
+    dispatch({ type: 'RESET_RECIPE' });
     history.push('/recipes');
   };
 
