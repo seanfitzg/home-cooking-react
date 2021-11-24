@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import AddEditRecipe from './Components/RecipeList/AddEditRecipe';
+import AddEditRecipe from './Components/AddEditRecipe/AddEditRecipe';
 import RecipeList from './Components/RecipeList/RecipeList';
 import { useAuth0 } from '@auth0/auth0-react';
 

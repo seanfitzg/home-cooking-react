@@ -10,8 +10,6 @@ const { Provider } = store;
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case 'set_to_blue':
-        return { ...state, color: 'blue' };
       case 'SET_RECIPE':
         return { ...state, recipe: action.recipe };
       case 'RESET_RECIPE':
