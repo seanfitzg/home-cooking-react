@@ -1,12 +1,12 @@
 ## Home Cooking - a demo react application
 
-Just an ongoing demo application built to learn the technologies required to build a full-stack React -> ASP.Net Core application.
+A full-stack React -> ASP.Net Core demo application.
 
 The ASP.Net Core api is here: https://github.com/seanfitzg/home-cooking-dotnetcore
 
 Deployed to: https://flux-home-cooking.herokuapp.com/
 
-This is a react app that uses:
+This is a React app that uses:
 
 - [Material UI](https://mui.com/) for UI components.
 - [Auth0](https://auth0.com/) to enable username authentication.
