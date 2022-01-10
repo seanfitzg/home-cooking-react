@@ -1,6 +1,6 @@
 ## Home Cooking - a demo react application
 
-This is an ongoing demo application I'm building to learn/investigate some skills and technologies required to build a full stack React -> ASP.Net Core application.
+Just an ongoing demo application built to learn the technologies required to build a full-stack React -> ASP.Net Core application.
 
 The ASP.Net Core api is here -> https://github.com/seanfitzg/home-cooking/tree/master/HomeCooking.Api
 
