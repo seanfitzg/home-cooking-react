@@ -2,7 +2,7 @@
 
 Just an ongoing demo application built to learn the technologies required to build a full-stack React -> ASP.Net Core application.
 
-The ASP.Net Core api is here -> https://github.com/seanfitzg/home-cooking/tree/master/HomeCooking.Api
+The ASP.Net Core api is here: https://github.com/seanfitzg/home-cooking-dotnetcore
 
 Deployed to: https://flux-home-cooking.herokuapp.com/
 
