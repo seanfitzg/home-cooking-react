@@ -1,10 +1,12 @@
+// use http://localhost:3500/v1.0/invoke/home-cooking-app/method/recipes' if not running dapr in docker.
+// http://localhost:5202/home-cooking-app/recipes is the envoy endpoint.
+
 const api = {
   development: {
     recipesApi: 'http://localhost:5000/recipes',
   },
   dapr: {
-    recipesApi:
-      'http://localhost:3500/v1.0/invoke/home-cooking-app/method/recipes',
+    recipesApi: 'http://localhost:5202/home-cooking-app/recipes',
   },
   production: {
     recipesApi: 'https://home-cooking-fastify.herokuapp.com/recipes',
