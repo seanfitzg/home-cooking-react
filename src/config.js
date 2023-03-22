@@ -2,10 +2,14 @@
 // http://localhost:5202/home-cooking-app/recipes is the envoy endpoint.
 
 const api = {
-  development: {
-    recipesApi: 'http://localhost:5000/recipes',
+  development_envoy: {
+    recipesApi: 'http://localhost:5010/recipes',
   },
-  dapr: {
+  development_yarp:
+  {
+    recipesApi: 'http://localhost:5020/home-cooking/recipes',
+  },
+  development_local_dapr: {
     recipesApi: 'http://localhost:5202/home-cooking-app/recipes',
   },
   production: {
@@ -13,15 +17,9 @@ const api = {
   },
 };
 
+
 const getApi = () => {
-  if (
-    process.env.REACT_APP_USE_DAPR &&
-    process.env.REACT_APP_USE_DAPR.toUpperCase() === 'TRUE'
-  ) {
-    return api.dapr.recipesApi;
-  } else {
-    return api[process.env.REACT_APP_ENV].recipesApi;
-  }
+  return api[process.env.REACT_APP_ENV].recipesApi;
 };
 
 export const apiUri = getApi();
